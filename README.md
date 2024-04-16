@@ -1,2 +1,2 @@
 # nodejs24_hw_artemgorbulya
-node.js hillel
+node version: 20.12.2
