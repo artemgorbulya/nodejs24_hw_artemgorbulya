@@ -4,7 +4,7 @@ function logger(moduleName) {
             console.log(moduleName + ': ' + message);
         },
         warn: function(message) {
-            console.warn(moduleName + ': ' + message);
+            console.error(moduleName + ': ' + message);
         },
         error: function(message) {
             console.error(moduleName + ': ' + message);
