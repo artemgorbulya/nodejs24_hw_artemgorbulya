@@ -1,5 +1,8 @@
-const logger = require('./utils/logger')('main');
+const dotenv = require("dotenv");
+dotenv.config();
 
-logger.info('the script is running!');
-logger.warn('warn message!');
-logger.error('error message!');
+const logger = require("./utils/logger")("main module");
+
+logger.info("the script is running!");
+logger.warn("warn message!");
+logger.error("error message!");
