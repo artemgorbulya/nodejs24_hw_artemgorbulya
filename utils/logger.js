@@ -1,29 +1,22 @@
 const { colorsEnabled, logLevel } = require("config");
-const { green, yellow, red } = require("colors/safe");
+const colors = require("colors/safe");
+
+if (!colorsEnabled) {
+  colors.disable();
+}
 
 function logger(moduleName) {
-  const shouldLogInfo = logLevel !== "warn" && logLevel !== "error";
+  const shouldLogInfo = logLevel === "info";
   const shouldLogWarn = logLevel !== "error";
 
   const info = shouldLogInfo
-    ? (...args) =>
-        console.log(
-          colorsEnabled ? green(`${moduleName}:`) : `${moduleName}:`,
-          ...args
-        )
+    ? (...args) => console.log(colors.green(`${moduleName}:`), ...args)
     : () => {};
   const warn = shouldLogWarn
-    ? (...args) =>
-        console.error(
-          colorsEnabled ? yellow(`${moduleName}:`) : `${moduleName}:`,
-          ...args
-        )
+    ? (...args) => console.error(colors.yellow(`${moduleName}:`), ...args)
     : () => {};
   const error = (...args) =>
-    console.error(
-      colorsEnabled ? red(`${moduleName}:`) : `${moduleName}:`,
-      ...args
-    );
+    console.error(colors.red(`${moduleName}:`), ...args);
 
   return { info, warn, error };
 }

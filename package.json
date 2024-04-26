@@ -1,6 +1,9 @@
 {
   "name": "nodejs24_hw_artemgorbulya",
   "version": "0.1.0",
+  "engines": {
+    "node": ">=20.12.0"
+  },
   "description": "homework node hillel",
   "main": "main.js",
   "scripts": {
