@@ -2,7 +2,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const logger = require("./utils/logger")("main module");
+const fileSync = require("./file_sync");
 
-logger.info("the script is running!");
-logger.warn("warn message!");
-logger.error("error message!");
+logger.info("the program is running!");
+fileSync.start();
