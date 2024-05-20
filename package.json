@@ -9,8 +9,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./main.js",
-    "start:dev": "nodemon ./main.js",
-    "server": "nodemon ./server.js"
+    "start:dev": "nodemon --inspect ./main.js",
+    "server": "node ./server.js",
+    "server:dev": "nodemon --inspect ./server.js",
+    "server:express": "node ./server_express.js",
+    "server:express:dev": "nodemon --inspect ./server_express.js"
   },
   "repository": {
     "type": "git",
@@ -32,6 +35,10 @@
   "dependencies": {
     "colors": "^1.4.0",
     "config": "^3.3.11",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "morgan": "^1.10.0",
+    "rotating-file-stream": "^3.2.1",
+    "yup": "^1.4.0"
   }
 }

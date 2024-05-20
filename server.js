@@ -3,9 +3,10 @@ dotenv.config();
 const { port } = require("config");
 const { createServer } = require("http");
 const logger = require("./utils/logger")("server");
+const { HTTP_STATUS_CODES } = require("./utils/constants");
 
 const handleOk = (req, res) => {
-  res.statusCode = 200;
+  res.statusCode = HTTP_STATUS_CODES.OK;
 
   const message = `${req.method} ${req.url} ${res.statusCode}`;
   logger.info(message);
@@ -14,7 +15,7 @@ const handleOk = (req, res) => {
 };
 
 const handleError = (req, res) => {
-  res.statusCode = 404;
+  res.statusCode = HTTP_STATUS_CODES.NOT_FOUND;
 
   const message = `${req.method} ${req.url} ${res.statusCode}`;
   logger.warn(message);
