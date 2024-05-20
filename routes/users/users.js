@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { HTTP_STATUS_CODES } = require("./../../utils/constants");
 
 const {
   userBodyValidator,
@@ -14,17 +15,17 @@ router.get("/", (req, resp) => {
 
 // Create a new user
 router.post("/", userBodyValidator, (req, resp) => {
-  resp.status(201).json("user created");
+  resp.status(HTTP_STATUS_CODES.CREATED).json("user created");
 });
 
 // Get user by ID
 router.get("/:userId", userIdValidator, (req, resp) => {
-  resp.status(200).json(`userId: ${req.params.userId}`);
+  resp.status(HTTP_STATUS_CODES.OK).json(`userId: ${req.params.userId}`);
 });
 
 // Delete user by ID
 router.delete("/:userId", userIdValidator, (req, resp) => {
-  resp.status(204).json("user deleted");
+  resp.status(HTTP_STATUS_CODES.NO_CONTENT).json("user deleted");
 });
 
 module.exports = {
