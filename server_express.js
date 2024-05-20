@@ -1,8 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
 const rfs = require("rotating-file-stream");
-
-const fs = require("fs");
 const path = require("path");
 
 const dotenv = require("dotenv");
@@ -13,10 +11,6 @@ const logger = require("./utils/logger")("server express");
 const { router: usersRouter } = require("./routes/users/users");
 
 const LOGS_DIRECTORY = path.join(__dirname, "logs");
-
-// if (!fs.existsSync(LOGS_DIRECTORY)) {
-//   fs.mkdirSync(LOGS_DIRECTORY);
-// }
 
 const accessLogStream = rfs.createStream("access.log", {
   size: "10M",
