@@ -1,4 +1,4 @@
-const router = require("express").Router();
+const usersRouter = require("express").Router();
 const { HTTP_STATUS_CODES } = require("./../../utils/constants");
 const {
   getUserList,
@@ -13,17 +13,17 @@ const {
 } = require("./../../middlewares/validators");
 
 // Get all users
-router.get("/", (req, resp) => {
+usersRouter.get("/", (req, resp) => {
   resp.json(getUserList());
 });
 
 // Create a new user
-router.post("/", userBodyValidator, (req, resp) => {
+usersRouter.post("/", userBodyValidator, (req, resp) => {
   resp.status(HTTP_STATUS_CODES.CREATED).json(createUser(req.body));
 });
 
 // Get user by ID
-router.get("/:userId", userIdValidator, (req, resp) => {
+usersRouter.get("/:userId", userIdValidator, (req, resp) => {
   try {
     resp.status(HTTP_STATUS_CODES.OK).json(getUserById(req.params.userId));
   } catch (error) {
@@ -32,7 +32,7 @@ router.get("/:userId", userIdValidator, (req, resp) => {
 });
 
 // Delete user by ID
-router.delete("/:userId", userIdValidator, (req, resp) => {
+usersRouter.delete("/:userId", userIdValidator, (req, resp) => {
   try {
     deleteUserById(req.params.userId);
     resp
@@ -44,5 +44,5 @@ router.delete("/:userId", userIdValidator, (req, resp) => {
 });
 
 module.exports = {
-  router,
+  usersRouter,
 };

@@ -1,0 +1,23 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title User List Table
+    link(rel="stylesheet" href="styles.css")
+  body
+    .container
+      h1 User List Table
+      table.mui-table
+        thead
+          tr
+            th ID
+            th Username
+            th Email
+        tbody
+          each userItem in locals.userList
+            tr
+                td= userItem.id
+                td= userItem.username
+                td= userItem.email
+            
