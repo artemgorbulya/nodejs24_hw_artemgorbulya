@@ -10,7 +10,8 @@ const userIdSchema = yup.number().required().positive().integer();
 
 const userBodyValidator = async (req, resp, next) => {
   try {
-    await userBodySchema.validate(req.body);
+    const parsedBody = await userBodySchema.validate(req.body);
+    req.body = parsedBody;
   } catch (err) {
     resp.status(HTTP_STATUS_CODES.BAD_REQUEST).send({ error: err.message });
     return;
@@ -19,10 +20,9 @@ const userBodyValidator = async (req, resp, next) => {
 };
 
 const userIdValidator = async (req, resp, next) => {
-  const { userId } = req.params;
-
   try {
-    await userIdSchema.validate(userId);
+    const parsedId = await userIdSchema.validate(req.params.userId);
+    req.params.userId = parsedId;
   } catch (err) {
     resp.status(HTTP_STATUS_CODES.BAD_REQUEST).send({ error: err.message });
     return;
